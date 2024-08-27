@@ -1,43 +1,40 @@
 // 1. 
-// enum Status {
-//     Pending = "pending",
-//     In_progress = "in-progress",
-//     Completed = "completed",
-//   }
-
-// type User = {
-//     name: string;
-//     age: number;
-//     status: Status;
-// }
-
-// function updateStatus( { user }, { status } ) : User {
-//     user.status = status;
-//     return user;
-// }
+enum Status {
+    Pending = "pending",
+    In_progress = "in-progress",
+    Completed = "completed",
+  }
+type User = {
+    name: string;
+    age: number;
+    status: Status;
+}
+function updateStatus(user: User, status: Status ) : User {
+    user.status = status;
+    return user;
+}
 
 // 2.
-// enum HttpMethod  {
-//     Get = "GET", 
-//     Post = "POST", 
-//     Put = "PUT", 
-//     Delete = "DELETE"
-// }
+enum HttpMethod  {
+    Get = "GET", 
+    Post = "POST", 
+    Put = "PUT", 
+    Delete = "DELETE"
+}
+type Request1 = {
+    method: HttpMethod;
+    url: string;
+    body?: any;
+}
+const request: Request1 = {
+    method: HttpMethod.Post,
+    url: 'https://google.com',
+}
 
-// type Request1 = {
-//     method: HttpMethod;
-//     url: string;
-//     body?: any;
-// }
-
-// function makeRequest({ request }) : Request1 {
-//     return request;
-// }
-// const request = makeRequest({
-//     method: HttpMethod.Post,
-//     url: 'https://google.com',
-// })
-// console.log(request); // { method: 'POST', url: 'https://google.com' }
+function makeRequest(request: { method: string, url: string }) {
+    return request;
+}
+console.log(request); // { method: 'POST', url: 'https://google.com' }
 
 // 3. Generics
 function logValue<T>(number: T) {
